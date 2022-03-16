@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://edaberk.com
+
+# Sitemaps
+Sitemap: https://edaberk.com/sitemap.xml
