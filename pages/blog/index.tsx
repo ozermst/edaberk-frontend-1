@@ -30,6 +30,8 @@ function Blog({ blogPosts, blogPage, tenant }: BlogPageProps) {
     description: "Eda Ayberkin Blog sayfası",
   };
 
+  console.log("Avatar URL: ", getStrapiMedia(tenant.attributes.featured_image));
+
   return (
     <>
       <NextSeo {...SEO} />
