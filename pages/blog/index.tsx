@@ -6,11 +6,11 @@ import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
 
 import React from "react";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
-import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import BlogPostFeatured from "../../components/blog-posts-featured";
@@ -47,15 +47,31 @@ function Blog({ blogPosts, blogPage, tenant }: BlogPageProps) {
 
           <Box sx={{ height: "3rem" }}></Box>
 
-          <Container maxWidth="sm">
-            <Stack direction="row" columnGap={2}>
-              <Avatar
-                alt="Eda Ayberkin"
-                src={getStrapiMedia(tenant.attributes.featured_image)}
-                sx={{ width: 56, height: 56 }}
-              />
+          <Container maxWidth="md">
+            <Stack direction="row" columnGap={5}>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 56,
+                  height: 56,
+                  borderRadius: "9999px",
+                  overflow: "hidden",
+                  flexShrink: 0,
+                }}
+              >
+                <Image
+                  src={getStrapiMedia(tenant.attributes.featured_image)}
+                  layout="fill"
+                  objectFit="cover"
+                  alt=""
+                />
+              </Box>
 
-              <Typography variant="body1" component="div">
+              <Typography
+                variant="body1"
+                component="div"
+                sx={{ flexShrink: 1 }}
+              >
                 <ReactMarkdown>{blogPage.attributes.intro}</ReactMarkdown>
               </Typography>
             </Stack>

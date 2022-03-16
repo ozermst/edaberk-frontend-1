@@ -16,11 +16,6 @@ interface BlogPostFeaturedProps {
 }
 
 function BlogPostFeatured({ blogPost }: BlogPostFeaturedProps) {
-  console.log(
-    "Featured Blog URL: ",
-    getStrapiMedia(blogPost.attributes.featured_image)
-  );
-
   return (
     <>
       {blogPost.attributes.featured_image.data === null ? (
