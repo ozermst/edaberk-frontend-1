@@ -44,6 +44,7 @@ function Home({
       </Head> */}
 
       <main>
+        <div className="log"></div>
         <Stack direction="row" rowGap={3} flexWrap="wrap">
           <Stack rowGap={2} sx={{ width: 1, maxWidth: { sm: 1 / 3 } }}>
             <TenantCard tenant={tenant} />
