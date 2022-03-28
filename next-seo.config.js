@@ -1,4 +1,4 @@
-export default {
+const SEO = {
   title: "Çocuk Doktoru Eda Ayberkin",
   titleTemplate: "Çocuk Doktoru Eda Ayberkin",
   defaultTitle: "Çocuk Doktoru Eda Ayberkin",
@@ -27,3 +27,5 @@ export default {
     cardType: 'summary_large_image',
   }, */
 };
+
+export default SEO;
