@@ -2,8 +2,8 @@ import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
 import IBlogPost from "../../interfaces/IBlogPost";
 
+import { useRouter } from "next/router";
 import Image from "next/image";
-import React from "react";
 import ReactMarkdown from "react-markdown";
 import NextImage from "../../components/image";
 import Date from "../../components/date";
@@ -19,6 +19,14 @@ interface BlogPostProps {
 }
 
 function BlogPost({ blogPost }: BlogPostProps) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  // if (!blogPost) return null;
+
   const SEO = {
     title: `Eda Ayberkin | ${blogPost.attributes.title}`,
     description: blogPost.attributes.description,
@@ -71,7 +79,8 @@ export async function getStaticPaths() {
         },
       })
     ),
-    fallback: false,
+    // fallback: false,
+    fallback: true,
   };
 }
 
@@ -94,6 +103,7 @@ export async function getStaticProps({ params }: any) {
     props: {
       blogPost: blogPostsRes.data[0],
     },
+    revalidate: 1,
   };
 }
 
