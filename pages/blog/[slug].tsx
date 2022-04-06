@@ -77,7 +77,6 @@ export async function getStaticPaths() {
         slug: post.attributes.slug,
       },
     })),
-    // fallback: false,
     fallback: true,
   };
 }
@@ -90,7 +89,7 @@ export async function getStaticProps({ params }: any) {
     fetchAPI("/posts", {
       filters: {
         slug: {
-          $eq: params.slug,
+          $eq: slug,
         },
       },
       populate: "*",

@@ -21,7 +21,7 @@ function Interest({ interest }: InterestProps) {
 
   return (
     <>
-      {interest.attributes.featured_image.data === null ? (
+      {/*   {interest.attributes.featured_image.data === null ? (
         <p>Image is not available</p>
       ) : (
         <Box sx={{ position: "relative", minHeight: { xs: 300, sm: 600 } }}>
@@ -32,7 +32,7 @@ function Interest({ interest }: InterestProps) {
             alt=""
           />
         </Box>
-      )}
+      )} */}
 
       <Box sx={{ height: "3rem" }}></Box>
       <Container maxWidth="md">
@@ -56,7 +56,7 @@ export async function getStaticPaths() {
         },
       })
     ),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -68,7 +68,7 @@ export async function getStaticProps({ params }: any) {
     fetchAPI("/interests", {
       filters: {
         slug: {
-          $eq: params.slug,
+          $eq: slug,
         },
       },
       populate: "*",

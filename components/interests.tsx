@@ -6,10 +6,10 @@ import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 import Link from "@mui/material/Link";
 
-import IInterests from "../interfaces/IInterest";
+import IInterest from "../interfaces/IInterest";
 
 interface InterestsProps {
-  interests: IInterests[];
+  interests: IInterest[];
 }
 
 function Interests({ interests }: InterestsProps) {
@@ -17,7 +17,7 @@ function Interests({ interests }: InterestsProps) {
     <Box>
       <List sx={{ columns: { sm: "2 auto", md: "3 auto" } }}>
         {interests.map((each) => (
-          <ListItem disablePadding key={each.id}>
+          /*           <ListItem disablePadding key={each.id}>
             {each.attributes.content ? (
               <NextLink href={`/interests/` + each.attributes.slug} passHref>
                 <Link>{each.attributes.name}</Link>
@@ -25,6 +25,9 @@ function Interests({ interests }: InterestsProps) {
             ) : (
               each.attributes.name
             )}
+          </ListItem> */
+          <ListItem disablePadding key={each.id}>
+            {each.attributes.name}
           </ListItem>
         ))}
       </List>
