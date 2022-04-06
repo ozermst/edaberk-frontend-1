@@ -30,6 +30,7 @@ function Interests({ interests }: InterestsProps) {
           */
           <ListItem disablePadding key={interest.id}>
             {interest.attributes.name}
+            Atopik Dermatit
           </ListItem>
         ))}
       </List>
