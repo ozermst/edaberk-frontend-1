@@ -92,7 +92,7 @@ export interface Attribute {
   featured_image: Featured_image;
 }
 
-export default interface IBlogPost {
+export default interface IPost {
   id: number;
   attributes: Attribute;
 }

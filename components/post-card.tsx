@@ -1,5 +1,5 @@
 import { getStrapiMedia } from "../lib/media";
-import IBlogPost from "../interfaces/IBlogPost";
+import IPost from "../interfaces/IPost";
 
 import React from "react";
 import NextLink from "next/link";
@@ -14,20 +14,20 @@ import Avatar from "@mui/material/Avatar";
 import Link from "@mui/material/Link";
 import { Typography } from "@mui/material";
 
-interface BlogPostCardProps {
-  blogPost: IBlogPost;
+interface PostCardProps {
+  post: IPost;
 }
 
-function BlogPostCard({ blogPost }: BlogPostCardProps) {
+function PostCard({ post }: PostCardProps) {
   return (
     <>
       <Card sx={{ maxWidth: 275 }}>
-        {blogPost.attributes.featured_image.data === null ? (
+        {post.attributes.featured_image.data === null ? (
           <p>Image is not available</p>
         ) : (
           <Box sx={{ position: "relative", height: { xs: 140 } }}>
             <Image
-              src={getStrapiMedia(blogPost.attributes.featured_image)}
+              src={getStrapiMedia(post.attributes.featured_image)}
               layout="fill"
               objectFit="cover"
               alt=""
@@ -43,14 +43,14 @@ function BlogPostCard({ blogPost }: BlogPostCardProps) {
         /> */}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {blogPost.attributes.title}
+            {post.attributes.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {blogPost.attributes.description}
+            {post.attributes.description}
           </Typography>
         </CardContent>
         <CardActions>
-          <NextLink href={`/blog/${blogPost.attributes.slug}`} passHref>
+          <NextLink href={`/blog/${post.attributes.slug}`} passHref>
             <Link> Devamını okuyun</Link>
           </NextLink>
         </CardActions>
@@ -59,4 +59,4 @@ function BlogPostCard({ blogPost }: BlogPostCardProps) {
   );
 }
 
-export default BlogPostCard;
+export default PostCard;

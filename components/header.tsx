@@ -21,7 +21,9 @@ function Header() {
             component="div"
             sx={{ mr: 2, flexGrow: 1, display: { xs: "flex", md: "flex" } }}
           >
-            <NextLink href="/">Eda Ayberkin</NextLink>
+            <NextLink href="/" passHref>
+              <Link sx={{ color: "white" }}>Eda Ayberkin</Link>
+            </NextLink>
           </Typography>
           {/*           <Typography
             variant="h6"

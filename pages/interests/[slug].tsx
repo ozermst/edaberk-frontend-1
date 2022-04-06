@@ -56,7 +56,7 @@ export async function getStaticPaths() {
         },
       })
     ),
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -79,6 +79,7 @@ export async function getStaticProps({ params }: any) {
     props: {
       interest: interestsRes.data[0],
     },
+    revalidate: 60,
   };
 }
 
@@ -87,7 +88,7 @@ export async function getStaticProps({ params }: any) {
 
   // Run API calls in parallel
   const [blogPostRes] = await Promise.all([
-    fetchAPI("/blog-posts", {
+    fetchAPI("/posts", {
       filters: {
         slug: params.slug,
       },

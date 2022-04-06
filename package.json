@@ -1,12 +1,12 @@
 {
-  "name": "edaberk-www-next",
+  "name": "edaberk-frontend-1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "export": "next build && next export",
     "postbuild": "next-sitemap",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "next lint"
   },
   "dependencies": {

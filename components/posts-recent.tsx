@@ -1,4 +1,4 @@
-import IBlogPost from "../interfaces/IBlogPost";
+import IPost from "../interfaces/IPost";
 
 import React from "react";
 import NextLink from "next/link";
@@ -6,15 +6,15 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Link from "@mui/material/Link";
 
-interface BlogPostsRecentProps {
-  blogPosts: IBlogPost[];
+interface PostsRecentProps {
+  posts: IPost[];
 }
 
-function BlogPostsRecent({ blogPosts }: BlogPostsRecentProps) {
+function PostsRecent({ posts }: PostsRecentProps) {
   return (
     <>
       <List>
-        {blogPosts.map((each) => (
+        {posts.map((each) => (
           <ListItem disablePadding key={each.id}>
             <NextLink href={`/blog/` + each.attributes.slug} passHref>
               <Link>{each.attributes.title}</Link>
@@ -26,4 +26,4 @@ function BlogPostsRecent({ blogPosts }: BlogPostsRecentProps) {
   );
 }
 
-export default BlogPostsRecent;
+export default PostsRecent;

@@ -9,21 +9,21 @@ import { Typography } from "@mui/material";
 
 import { getStrapiMedia } from "../lib/media";
 
-import IBlogPost from "../interfaces/IBlogPost";
+import IPost from "../interfaces/IPost";
 
-interface BlogPostFeaturedProps {
-  blogPost: IBlogPost;
+interface PostFeaturedProps {
+  post: IPost;
 }
 
-function BlogPostFeatured({ blogPost }: BlogPostFeaturedProps) {
+function PostFeatured({ post }: PostFeaturedProps) {
   return (
     <>
-      {blogPost.attributes.featured_image.data === null ? (
+      {post.attributes.featured_image.data === null ? (
         <p>Image is not available</p>
       ) : (
         <Box sx={{ position: "relative", minHeight: { xs: 300, sm: 600 } }}>
           <Image
-            src={getStrapiMedia(blogPost.attributes.featured_image)}
+            src={getStrapiMedia(post.attributes.featured_image)}
             layout="fill"
             objectFit="cover"
             alt=""
@@ -34,12 +34,12 @@ function BlogPostFeatured({ blogPost }: BlogPostFeaturedProps) {
       <Container maxWidth="md">
         <Stack mt={3}>
           <Typography variant="h4" component="h2" gutterBottom>
-            {blogPost.attributes.title}
+            {post.attributes.title}
           </Typography>
 
-          <Typography>{blogPost.attributes.description}</Typography>
+          <Typography>{post.attributes.description}</Typography>
 
-          <NextLink href={`/blog/${blogPost.attributes.slug}`} passHref>
+          <NextLink href={`/blog/${post.attributes.slug}`} passHref>
             <Link> Devamını okuyun</Link>
           </NextLink>
         </Stack>
@@ -48,4 +48,4 @@ function BlogPostFeatured({ blogPost }: BlogPostFeaturedProps) {
   );
 }
 
-export default BlogPostFeatured;
+export default PostFeatured;

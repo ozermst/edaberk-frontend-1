@@ -2,7 +2,7 @@ import ITenant from "../interfaces/ITenant";
 import IInterests from "../interfaces/IInterest";
 import IWorkExperience from "../interfaces/IWorkExperience";
 import IUniversity from "../interfaces/IUniversity";
-import IBlogPost from "../interfaces/IBlogPost";
+import IPost from "../interfaces/IPost";
 
 import { fetchAPI } from "../lib/api";
 import styles from "../styles/Home.module.css";
@@ -18,14 +18,14 @@ import TenantCard from "../components/tenant-card";
 import Interests from "../components/interests";
 import WorkExperiences from "../components/work-experiences";
 import Universities from "../components/universities";
-import BlogPostsRecent from "../components/blog-posts-recent";
+import PostsRecent from "../components/posts-recent";
 
 interface HomePageProps {
   tenant: ITenant;
   interests: IInterests[];
   workExperiences: IWorkExperience[];
   universities: IUniversity[];
-  blogPosts: IBlogPost[];
+  posts: IPost[];
 }
 
 function Home({
@@ -33,7 +33,7 @@ function Home({
   interests,
   workExperiences,
   universities,
-  blogPosts,
+  posts,
 }: HomePageProps) {
   return (
     <>
@@ -52,7 +52,7 @@ function Home({
               <Typography variant="h6" component="div">
                 Yakın zaman paylaşımlarım
               </Typography>
-              <BlogPostsRecent blogPosts={blogPosts} />
+              <PostsRecent posts={posts} />
             </Box>
           </Stack>
 
@@ -94,7 +94,7 @@ export async function getStaticProps({ params }: any) {
     interestsRes,
     workExperiencesRes,
     universitiesRes,
-    blogPostsRes,
+    postsRes,
   ] = await Promise.all([
     fetchAPI("/tenant", { populate: "*" }),
     fetchAPI("/interests", {
@@ -106,7 +106,7 @@ export async function getStaticProps({ params }: any) {
     }),
     fetchAPI("/work-experiences", { sort: ["date_from:desc"], populate: "*" }),
     fetchAPI("/universities", { sort: ["date_from:desc"], populate: "*" }),
-    fetchAPI("/blog-posts", {
+    fetchAPI("/posts", {
       pagination: {
         page: 1,
         pageSize: 5,
@@ -121,9 +121,9 @@ export async function getStaticProps({ params }: any) {
       interests: interestsRes.data,
       workExperiences: workExperiencesRes.data,
       universities: universitiesRes.data,
-      blogPosts: blogPostsRes.data,
+      posts: postsRes.data,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 

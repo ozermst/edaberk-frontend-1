@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://edaberk.com</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
-<url><loc>https://edaberk.com/blog</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
-<url><loc>https://edaberk.com/blog/bebekler-ne-zaman-doner</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
-<url><loc>https://edaberk.com/interests/adenovirus-enfeksiyonu</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
-<url><loc>https://edaberk.com/interests/aftoez-stomatit</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
-<url><loc>https://edaberk.com/interests/akdeniz-anemisi</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
-<url><loc>https://edaberk.com/interests/akut-bronsit</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T17:35:16.809Z</lastmod></url>
+<url><loc>https://edaberk.com</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-06T14:59:06.751Z</lastmod></url>
+<url><loc>https://edaberk.com/blog</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-06T14:59:06.751Z</lastmod></url>
+<url><loc>https://edaberk.com/blog/bebekler-ne-zaman-doner</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-06T14:59:06.751Z</lastmod></url>
+<url><loc>https://edaberk.com/interests/adenovirus-enfeksiyonu</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-04-06T14:59:06.751Z</lastmod></url>
 </urlset>

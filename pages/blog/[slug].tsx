@@ -1,6 +1,6 @@
 import { fetchAPI } from "../../lib/api";
 import { getStrapiMedia } from "../../lib/media";
-import IBlogPost from "../../interfaces/IBlogPost";
+import IPost from "../../interfaces/IPost";
 
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -14,11 +14,11 @@ import Typography from "@mui/material/Typography";
 
 import { NextSeo } from "next-seo";
 
-interface BlogPostProps {
-  blogPost: IBlogPost;
+interface PostProps {
+  post: IPost;
 }
 
-function BlogPost({ blogPost }: BlogPostProps) {
+function Post({ post }: PostProps) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -28,8 +28,8 @@ function BlogPost({ blogPost }: BlogPostProps) {
   // if (!blogPost) return null;
 
   const SEO = {
-    title: `Eda Ayberkin | ${blogPost.attributes.title}`,
-    description: blogPost.attributes.description,
+    title: `Eda Ayberkin | ${post.attributes.title}`,
+    description: post.attributes.description,
   };
 
   // const imageUrl: string = getStrapiMedia(blogPost.attributes.featured_image);
@@ -38,12 +38,12 @@ function BlogPost({ blogPost }: BlogPostProps) {
     <>
       <NextSeo {...SEO} />
 
-      {blogPost.attributes.featured_image.data === null ? (
+      {post.attributes.featured_image.data === null ? (
         <p>Image is not available</p>
       ) : (
         <Box sx={{ position: "relative", minHeight: { xs: 300, sm: 600 } }}>
           <Image
-            src={getStrapiMedia(blogPost.attributes.featured_image)}
+            src={getStrapiMedia(post.attributes.featured_image)}
             layout="fill"
             objectFit="cover"
             alt=""
@@ -54,12 +54,12 @@ function BlogPost({ blogPost }: BlogPostProps) {
       <Box sx={{ height: "3rem" }}></Box>
       <Container maxWidth="md">
         <Typography variant="h3" component="div" gutterBottom>
-          {blogPost.attributes.title}
+          {post.attributes.title}
         </Typography>
-        <ReactMarkdown>{blogPost.attributes.content}</ReactMarkdown>
+        <ReactMarkdown>{post.attributes.content}</ReactMarkdown>
         <Box>
           <Date
-            dateString={blogPost.attributes.publishedAt}
+            dateString={post.attributes.publishedAt}
             dateFormat="LLLL	d, yyyy"
           />
         </Box>
@@ -69,16 +69,14 @@ function BlogPost({ blogPost }: BlogPostProps) {
 }
 
 export async function getStaticPaths() {
-  const blogPostsRes = await fetchAPI("/blog-posts", { fields: ["slug"] });
+  const postsRes = await fetchAPI("/posts", { fields: ["slug"] });
 
   return {
-    paths: blogPostsRes.data.map(
-      (blogPost: { attributes: { slug: string } }) => ({
-        params: {
-          slug: blogPost.attributes.slug,
-        },
-      })
-    ),
+    paths: postsRes.data.map((post: { attributes: { slug: string } }) => ({
+      params: {
+        slug: post.attributes.slug,
+      },
+    })),
     // fallback: false,
     fallback: true,
   };
@@ -88,8 +86,8 @@ export async function getStaticProps({ params }: any) {
   const { slug } = params;
 
   // Run API calls in parallel
-  const [blogPostsRes] = await Promise.all([
-    fetchAPI("/blog-posts", {
+  const [postsRes] = await Promise.all([
+    fetchAPI("/posts", {
       filters: {
         slug: {
           $eq: params.slug,
@@ -101,30 +99,10 @@ export async function getStaticProps({ params }: any) {
 
   return {
     props: {
-      blogPost: blogPostsRes.data[0],
+      post: postsRes.data[0],
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
 
-/* export async function getServerSideProps({ params }: any) {
-  const { slug } = params;
-
-  // Run API calls in parallel
-  const [blogPostRes] = await Promise.all([
-    fetchAPI("/blog-posts", {
-      filters: {
-        slug: params.slug,
-      },
-      populate: "*",
-    }),
-  ]);
-
-  return {
-    props: {
-      blogPost: blogPostRes.data[0],
-    },
-  };
-} */
-
-export default BlogPost;
+export default Post;
