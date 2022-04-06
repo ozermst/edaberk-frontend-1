@@ -16,8 +16,9 @@ function Interests({ interests }: InterestsProps) {
   return (
     <Box>
       <List sx={{ columns: { sm: "2 auto", md: "3 auto" } }}>
-        {interests.map((each) => (
-          /*           <ListItem disablePadding key={each.id}>
+        {interests.map((interest) => (
+          /*           
+          <ListItem disablePadding key={each.id}>
             {each.attributes.content ? (
               <NextLink href={`/interests/` + each.attributes.slug} passHref>
                 <Link>{each.attributes.name}</Link>
@@ -25,9 +26,10 @@ function Interests({ interests }: InterestsProps) {
             ) : (
               each.attributes.name
             )}
-          </ListItem> */
-          <ListItem disablePadding key={each.id}>
-            {each.attributes.name}
+          </ListItem> 
+          */
+          <ListItem disablePadding key={interest.id}>
+            {interest.attributes.name}
           </ListItem>
         ))}
       </List>
