@@ -35,7 +35,7 @@ function Home({
   universities,
   posts,
 }: HomePageProps) {
-  console.log(interests);
+  // console.log(interests);
   return (
     <>
       {/*       <Head>
