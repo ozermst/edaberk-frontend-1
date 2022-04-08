@@ -37,3 +37,6 @@ yarn-error.log*
 yarn.lock
 package-lock.json
 
+# seo
+sitemap*.xml
+
